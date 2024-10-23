@@ -1,11 +1,15 @@
 <?php
 
-use Helpers\Psr4AutoloaderClass;
 require_once "Helpers\Psr4AutoLoaderClass.php";
 
-$loader = new Psr4AutoloaderClass();
+
+
+$loader = new Helpers\Psr4AutoloaderClass();
 $loader->register();
 $loader->addNamespace('\Helpers', '/Helpers');
 $loader->addNamespace('\League\Plates', '/Vendor/Plates/src');
+
+//$engine = new Engine();
+//echo $engine->render("template.php", array());
 
 
