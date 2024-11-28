@@ -15,8 +15,10 @@ class MainController
         $this->templates = $value;
     }
 
+    
     /**
-     * Renders the page using the engine
+     * The index function in PHP renders the 'home' template with the 'tftSetName' variable set to
+     * 'Remix Rumble'.
      */
     public function index() : void {
         echo $this->templates->render('home', ['tftSetName' => 'Remix Rumble']);
