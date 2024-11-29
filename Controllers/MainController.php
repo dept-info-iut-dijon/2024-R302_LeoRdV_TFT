@@ -2,6 +2,7 @@
 namespace Controllers;
 
 use League\Plates\Engine;
+use Models\UnitPDO;
 class MainController
 {
     private $templates;
@@ -21,6 +22,11 @@ class MainController
      * 'Remix Rumble'.
      */
     public function index() : void {
-        echo $this->templates->render('home', ['tftSetName' => 'Remix Rumble']);
+        $pdo = new UnitPDO;
+        $pdo->getDB();
+        $all = $pdo->getAll();
+        $francis = $pdo->getById("00000");
+        $noone = $pdo->getById("777");
+        echo $this->templates->render('home', ['tftSetName' => 'Remix Rumble', "all" => $all, "francis" => $francis, "noone"=> $noone]);
     }
 }

@@ -1,6 +1,8 @@
 <?php
-require_once "BasePDODAO.php";
-require_once "Unit.php";
+namespace Models;
+use PDO;
+use PDOStatement;
+
 class UnitPDO extends BasePDODAO{
     /**
      * Function that gets every Unit in the DB
@@ -8,12 +10,9 @@ class UnitPDO extends BasePDODAO{
      */
     public function getAll(): array{
         $temp = $this->execRequest("SELECT * FROM UNIT", null);
-        $data = $temp->fetchAll();
-        $arr = [];
-        foreach($data as $value){
-            $arr[] = $this->hydrate($value);
-        }
-        return $arr;
+        $temp->setFetchMode(PDO::FETCH_CLASS, 'Models\Unit');
+        $units = $temp->fetchAll();
+        return $units;
     }
 
     /**
@@ -22,13 +21,21 @@ class UnitPDO extends BasePDODAO{
      * @return ?Unit
      */
     public function getById(string $idUnit): ?Unit{
-        $temp = $this->execRequest("SELECT * FROM UNIT WHERE id == ?", array($idUnit));
-        $unit = $this->hydrate($temp->fetchAll());
+        $temp = $this->execRequest("SELECT * FROM UNIT WHERE id = ?", array($idUnit));
+        $temp->setFetchMode(PDO::FETCH_CLASS, 'Models\Unit');
+        $unit = $temp->fetch();
+        if ($unit === false) {
+            return null; 
+        }
+    
+        echo $unit->getName(); 
+    
         return $unit;
     }
 
     /**
      * Hydrates Unit objects from the db
+     * useless now
      * @param array $arr
      * @return Unit
      */

@@ -1,10 +1,10 @@
-<?
+<?php
 namespace Config;
+
 use Exception;
 
 class Config {
     private static $param;
-
     // Renvoie la valeur d'un paramètre de configuration
     public static function get($nom, $valeurParDefaut = null) {
         if (isset(self::getParameter()[$nom])) {

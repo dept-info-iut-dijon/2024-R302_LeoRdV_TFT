@@ -1,5 +1,10 @@
 <?php
+namespace Models;
+
+use PDO;
 use Config\Config;
+use PDOStatement;
+
 abstract class BasePDODAO{
     private $db;
 
@@ -9,7 +14,6 @@ abstract class BasePDODAO{
      */
     public function getDB():PDO{
         if (is_null($this->db)){
-            
             $this->db = new PDO(
             Config::get('dsn'),
             Config::get('user'),
@@ -25,11 +29,10 @@ abstract class BasePDODAO{
  * @return false if no PDOStatement
  */
     protected function execRequest(string $sql, array $params = null):PDOStatement|false{
-        $stmt = htmlspecialchars($sql);
+        //$stmt = htmlspecialchars($sql);
         $req = $this->db->prepare($sql);
-        $bool = $req->execute($params);
-        if ($bool) return $req;
-        else return false;
+        $req->execute($params);
+        return $req;
     }
 
 }
