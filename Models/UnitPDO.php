@@ -28,7 +28,7 @@ class UnitPDO extends BasePDODAO{
             return null; 
         }
     
-        echo $unit->getName(); 
+        //echo $unit->getName(); 
     
         return $unit;
     }
