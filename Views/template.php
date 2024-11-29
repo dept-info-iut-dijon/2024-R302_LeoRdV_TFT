@@ -16,7 +16,13 @@
 <header>
     <!-- Menu -->
     <nav>
-
+        <form action="index.php" method="get">
+            <input type="submit" value="index" name="action">
+            <input type="submit" value="add-unit" name = "action">
+            <input type="submit" value="add-type-origin" name="action">
+            <input type="submit" value="search" name="action">
+        </form>
+        
     </nav>
 </header>
 <!-- #contenu -->

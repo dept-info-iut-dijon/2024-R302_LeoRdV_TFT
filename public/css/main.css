@@ -1,3 +1,9 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 html{
     background-color: #0f2b50;
     color: white;
@@ -6,4 +12,18 @@ html{
 
 h1{
     text-align: center;
+}
+
+#colones{
+    display: flex;
+}
+
+.col{
+    width: 200px;
+    margin: 5px;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
