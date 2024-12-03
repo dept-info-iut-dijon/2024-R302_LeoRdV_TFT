@@ -3,7 +3,7 @@ namespace Controllers;
 
 use League\Plates\Engine;
 use Models\UnitPDO;
-class MainController
+class MainController extends IController
 {
     private $templates;
 
